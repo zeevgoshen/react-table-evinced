@@ -3,7 +3,7 @@ import { useState } from 'react';
 import './table.css'
 
 const TableHeaders = (props) => {
-  let headers = Object.keys(props.headernames);
+  let headers = Object.keys(props.headernames[0]);
   const [isActive, setIsActive] = useState(true);
 
   const getColumnLength = () => {
@@ -25,9 +25,28 @@ const TableHeaders = (props) => {
     // setIsActive(true);
   };
 
-  const filterHeader = (headerText) => {
 
-    return (<div><label>{headerText}</label><input type='text' className='filterTextBox'/></div>)
+  const [products, setProducts] = useState(props.headernames);
+  const [filterText, setFilter] = useState("");
+   
+  Object.values(products)
+  const filterProducts = (event) => {
+      setFilter(event.target.value);
+  }
+  
+  const filtered = React.useMemo(() => {
+      return products.filter(product => {
+        return filterText.length > 0 ?  product.selector.includes(filterText) : true;
+      })
+  }, [filterText, products]);
+
+  console.log(filtered);
+
+  // update context with filtered results
+  
+
+  const filterHeader = (headerText) => {
+    return (<div><label>{headerText}</label><input type='text' onChange={filterProducts} className='filterTextBox'/></div>)
   }
 
   const sortHeader = (headerText) => {
@@ -39,12 +58,12 @@ const TableHeaders = (props) => {
     <thead>
       <tr>
         {headers.map((header, index) => {
-          console.log(index)
+          //console.log(index)
           return (
             <th 
               className='columnHeader'
               key={index}
-              colSpan={getColumnLength}
+              //colSpan={getColumnLength}
               style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
               onClick={(e) => handleClick(index, e)}
             >

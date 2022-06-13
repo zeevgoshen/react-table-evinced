@@ -1,6 +1,8 @@
 import React from 'react';
+import { createContext } from 'react'
 import TableHeaders from './table.headers';
 import './table.css'
+
 
 const Table = (props) => {
   return (
@@ -8,7 +10,7 @@ const Table = (props) => {
       <table
         style={{ width: 'auto', height: 'auto' }}
       >
-        <TableHeaders headernames={props.data[0]} />
+        <TableHeaders headernames={props.data} />
         <tbody>
           {Object.values(props.data).map((obj, index) => (
             <tr key={index} className='trSeparator'>
