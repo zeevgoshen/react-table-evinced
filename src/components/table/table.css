@@ -1,0 +1,19 @@
+.filterTextBox {
+  height:35px;
+  background-color: #fff;
+}
+.columnHeader{
+  font-size: 12px;
+  height: 45px;
+  background-color: #607085;
+  font-family: sans-serif;
+  padding: '10px 0';
+}
+.trSeparator{
+  border-bottom: 1px solid #607085;
+  background-color: red;
+  border:1px solid blue !important;
+}
+.columnCell {
+  padding: '5px 5px 5px 15px';
+}
