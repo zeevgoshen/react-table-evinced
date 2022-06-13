@@ -30,13 +30,18 @@ const TableHeaders = (props) => {
     return (<div><label>{headerText}</label><input type='text' className='filterTextBox'/></div>)
   }
 
+  const sortHeader = (headerText) => {
+
+    return (<div className='up-arrow'>{headerText}</div>)
+  }
+
   return (
     <thead>
       <tr>
         {headers.map((header, index) => {
           console.log(index)
           return (
-            <th
+            <th 
               className='columnHeader'
               key={index}
               colSpan={getColumnLength}
@@ -45,7 +50,9 @@ const TableHeaders = (props) => {
             >
               {header.toUpperCase() === 'ID' ? 'NO.' : header.toUpperCase() |
               header.toUpperCase() === 'SELECTOR' ? filterHeader(header.toUpperCase()) : header.toUpperCase() | 
-              header.toUpperCase() === 'URL' ? filterHeader(header.toUpperCase()) : header.toUpperCase()}
+              header.toUpperCase() === 'URL' ? filterHeader(header.toUpperCase()) : header.toUpperCase() |
+              header.toUpperCase() === 'COMPONENT' ? sortHeader(header.toUpperCase()) : header.toUpperCase()
+              }
             </th>
           );
         })}

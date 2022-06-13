@@ -1,6 +1,6 @@
 import React from 'react';
 import TableHeaders from './table.headers';
-import styles from './table.css'
+import './table.css'
 
 const Table = (props) => {
   return (
@@ -11,9 +11,9 @@ const Table = (props) => {
         <TableHeaders headernames={props.data[0]} />
         <tbody>
           {Object.values(props.data).map((obj, index) => (
-            <tr key={index} className={styles.trSeparator}>
+            <tr key={index} className='trSeparator'>
               {Object.values(obj).map((value, index1) => (
-                <td className={styles.columnCell} key={index1} >
+                <td className='columnCell' key={index1} >
                   {value}
                 </td>
               ))}
