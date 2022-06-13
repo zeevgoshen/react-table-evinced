@@ -1,5 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { IssuesContext} from "../../App";
+
+
 import './table.css'
 
 const TableHeaders = (props) => {
@@ -28,8 +31,10 @@ const TableHeaders = (props) => {
 
   const [products, setProducts] = useState(props.headernames);
   const [filterText, setFilter] = useState("");
-   
-  Object.values(products)
+  const { issues, setIssues } = useContext(IssuesContext)
+
+
+  //Object.values(products)
   const filterProducts = (event) => {
       setFilter(event.target.value);
   }
@@ -42,8 +47,15 @@ const TableHeaders = (props) => {
 
   console.log(filtered);
 
-  // update context with filtered results
+  if (filtered.length > 0) {
+    setIssues(filtered);
+  } else {
+    setIssues(products);
+  }
   
+  // update context with filtered results
+  // but caused issues
+  //
 
   const filterHeader = (headerText) => {
     return (<div><label>{headerText}</label><input type='text' onChange={filterProducts} className='filterTextBox'/></div>)

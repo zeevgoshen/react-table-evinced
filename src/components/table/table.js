@@ -4,15 +4,19 @@ import TableHeaders from './table.headers';
 import './table.css'
 
 
+
 const Table = (props) => {
+
+  let propsData = props.data;
+
   return (
     <div>
       <table
         style={{ width: 'auto', height: 'auto' }}
       >
-        <TableHeaders headernames={props.data} />
+        <TableHeaders headernames={propsData} />
         <tbody>
-          {Object.values(props.data).map((obj, index) => (
+          {Object.values(propsData).map((obj, index) => (
             <tr key={index} className='trSeparator'>
               {Object.values(obj).map((value, index1) => (
                 <td className='columnCell' key={index1} >
