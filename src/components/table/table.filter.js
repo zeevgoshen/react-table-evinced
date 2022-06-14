@@ -1,35 +1,44 @@
-import React from 'react';
-import { useState, useContext } from 'react';
+import React,{ useState, useContext } from 'react';
 import { IssuesContext } from '../../App';
-import { tabledata } from '../../table.data'
 
 import './table.css';
+
+
+
+// When the filter text doesn't match, we show the full list of issues
 
 const TableFilter = (props) => {
 
   const [filterText, setFilter] = useState('');
   
-  const [products, setProducts] = useState(props.issues);
+  // using this state so we can reload the full issuelist
+  // when no results are found
+  const [allIssues, setAllIssues] = useState(props.issues);
+
+  // We will be using setIssues (from context) to update
+  // the table with the filtered results 
   const { issues, setIssues } = useContext(IssuesContext);
+
 
   const filtered = React.useMemo(() => {
 
+    // no search text in the search textbox
+    // show all issues
     if (filterText.length === 0) {
-      setIssues(products);
+      setIssues(allIssues);
     }
 
-    return products.filter((product) => {
+    return allIssues.filter((product) => {
       return filterText.length > 0
       ? product.selector.includes(filterText)
-      : products;
+      : allIssues;
     });
-  }, [filterText, products]);
+  }, [filterText, allIssues]);
 
-  if (filtered.length > 0 && filtered.length < products.length) {
-    console.log("tabledata")
+  if (filtered.length > 0 && filtered.length < allIssues.length) {
     setIssues(filtered);
   } else if (filtered.length === 0) {
-    setIssues(products);
+    setIssues(allIssues);
   }
 
   return (
