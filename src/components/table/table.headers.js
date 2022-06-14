@@ -1,11 +1,9 @@
 import React from 'react';
-import { useState, useContext } from 'react';
-import { IssuesContext } from '../../App';
-import TableFilter from './table.filter.js'
+import { useState } from 'react';
+import TableFilter from './table.filter.js';
 import './table.css';
 
 const TableHeaders = (props) => {
-
   let headers;
 
   if (props.headernames[0] === undefined) {
@@ -21,55 +19,11 @@ const TableHeaders = (props) => {
   };
 
   const handleClick = (index, event) => {
-    //console.log(index);
-    //console.log(event.target);
-    //if (event.target.value == index){
     setIsActive((current) => !current);
-    //console.log('dd');
-    //}
-    // 👇️ toggle
-    //setIsActive((current) => !current);
-
-    // 👇️ or set to true
-    // setIsActive(true);
   };
 
-  // const [products, setProducts] = useState(props.headernames);
-  // const [filterText, setFilter] = useState('');
-  // const { issues, setIssues } = useContext(IssuesContext);
-
-  //Object.values(products)
-  // const filterProducts = (event) => {
-  //   setFilter(event.target.value);
-  // };
-
-  // const filtered = React.useMemo(() => {
-  //   return products.filter((product) => {
-  //     return filterText.length > 0
-  //       ? product.selector.includes(filterText)
-  //       : true;
-  //   });
-  // }, [filterText, products]);
-
-  //console.log(filtered);
-
-  // if (filtered.length > 0) {
-  //   setIssues(filtered);
-  // } else {
-  //   setIssues(products);
-  // }
-
-  // update context with filtered results
-  // but caused issues
-  //
-  //const [issues, setIssues] = useState(props.data);
-
   const filterHeader = (headerText) => {
-    return (
-      // <IssuesContext.Provider value={{ issues, setIssues }}>
-        <TableFilter issues={props.headernames} headerText={headerText} />
-        // </IssuesContext.Provider>
-    );
+    return <TableFilter issues={props.headernames} headerText={headerText} />;
   };
 
   const sortHeader = (headerText) => {
