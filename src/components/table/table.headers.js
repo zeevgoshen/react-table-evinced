@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import TableFilter from './table.filter.js';
+import TableSort from './table.sort.js';
 import './table.css';
 
 const TableHeaders = (props) => {
@@ -27,7 +28,7 @@ const TableHeaders = (props) => {
   };
 
   const sortHeader = (headerText) => {
-    return <div className="up-arrow">{headerText}</div>;
+    return <TableSort headerText={headerText}/>
   };
 
   return (

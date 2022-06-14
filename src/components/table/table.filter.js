@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useMemo } from 'react';
 import { IssuesContext } from '../../App';
 
 import './table.css';
@@ -16,7 +16,7 @@ const TableFilter = (props) => {
   // the table with the filtered results
   const { issues, setIssues } = useContext(IssuesContext);
 
-  const filteredIssues = React.useMemo(() => {
+  const filteredIssues = useMemo(() => {
     // no search text in the search textbox
     // show all issues
     if (filterText.length === 0) {
