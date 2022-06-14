@@ -1,17 +1,25 @@
 import React from 'react';
 import { useState, useContext } from 'react';
 import { IssuesContext} from "../../App";
-
-
 import './table.css'
 
 const TableHeaders = (props) => {
-  let headers = Object.keys(props.headernames[0]);
+
+  let headers;
+  
+  if (props.headernames[0] === undefined) {
+    return <div>There's no data in the data file to display.</div>;
+  } else {
+    headers = Object.keys(props.headernames[0]);
+  }
+
+
   const [isActive, setIsActive] = useState(true);
 
   const getColumnLength = () => {
     return headers.length;
   };
+
 
   const handleClick = (index, event) => {
 

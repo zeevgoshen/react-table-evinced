@@ -8,6 +8,22 @@ import './table.css'
 const Table = (props) => {
 
   let propsData = props.data;
+  let dataValues = Object.values(propsData);
+
+  // console.log("propsData");
+  // console.log(propsData);
+  // console.log("propsData");
+
+  // console.log("props.data");
+  // console.log(props.data);
+  // console.log("props.data");
+
+  // console.log("dataValues");
+  // console.log(dataValues);
+  // console.log("dataValues");
+
+
+
 
   return (
     <div>
@@ -16,7 +32,7 @@ const Table = (props) => {
       >
         <TableHeaders headernames={propsData} />
         <tbody>
-          {Object.values(propsData).map((obj, index) => (
+          {dataValues.map((obj, index) => (
             <tr key={index} className='trSeparator'>
               {Object.values(obj).map((value, index1) => (
                 <td className='columnCell' key={index1} >
