@@ -28,9 +28,9 @@ const TableFilter = (props) => {
       setIssues(allIssues);
     }
 
-    return allIssues.filter((product) => {
+    return allIssues.filter((issue) => {
       return filterText.length > 0
-      ? product.selector.includes(filterText)
+      ? issue.selector.toLowerCase().includes(filterText.toLowerCase())
       : allIssues;
     });
   }, [filterText, allIssues]);
