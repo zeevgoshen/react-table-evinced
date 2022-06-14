@@ -1,18 +1,18 @@
 import React from 'react';
 import { useState, useContext } from 'react';
-import { IssuesContext} from "../../App";
-import './table.css'
+import { IssuesContext } from '../../App';
+import TableFilter from './table.filter.js'
+import './table.css';
 
 const TableHeaders = (props) => {
 
   let headers;
-  
+
   if (props.headernames[0] === undefined) {
     return <div>There's no data in the data file to display.</div>;
   } else {
     headers = Object.keys(props.headernames[0]);
   }
-
 
   const [isActive, setIsActive] = useState(true);
 
@@ -20,14 +20,12 @@ const TableHeaders = (props) => {
     return headers.length;
   };
 
-
   const handleClick = (index, event) => {
-
     //console.log(index);
     //console.log(event.target);
     //if (event.target.value == index){
-      setIsActive((current) => !current);
-      //console.log('dd');
+    setIsActive((current) => !current);
+    //console.log('dd');
     //}
     // 👇️ toggle
     //setIsActive((current) => !current);
@@ -36,62 +34,69 @@ const TableHeaders = (props) => {
     // setIsActive(true);
   };
 
-
-  const [products, setProducts] = useState(props.headernames);
-  const [filterText, setFilter] = useState("");
-  const { issues, setIssues } = useContext(IssuesContext)
-
+  // const [products, setProducts] = useState(props.headernames);
+  // const [filterText, setFilter] = useState('');
+  // const { issues, setIssues } = useContext(IssuesContext);
 
   //Object.values(products)
-  const filterProducts = (event) => {
-      setFilter(event.target.value);
-  }
-  
-  const filtered = React.useMemo(() => {
-      return products.filter(product => {
-        return filterText.length > 0 ?  product.selector.includes(filterText) : true;
-      })
-  }, [filterText, products]);
+  // const filterProducts = (event) => {
+  //   setFilter(event.target.value);
+  // };
 
-  console.log(filtered);
+  // const filtered = React.useMemo(() => {
+  //   return products.filter((product) => {
+  //     return filterText.length > 0
+  //       ? product.selector.includes(filterText)
+  //       : true;
+  //   });
+  // }, [filterText, products]);
 
-  if (filtered.length > 0) {
-    setIssues(filtered);
-  } else {
-    setIssues(products);
-  }
-  
+  //console.log(filtered);
+
+  // if (filtered.length > 0) {
+  //   setIssues(filtered);
+  // } else {
+  //   setIssues(products);
+  // }
+
   // update context with filtered results
   // but caused issues
   //
+  //const [issues, setIssues] = useState(props.data);
 
   const filterHeader = (headerText) => {
-    return (<div><label>{headerText}</label><input type='text' onChange={filterProducts} className='filterTextBox'/></div>)
-  }
+    return (
+      // <IssuesContext.Provider value={{ issues, setIssues }}>
+        <TableFilter issues={props.headernames} headerText={headerText} />
+        // </IssuesContext.Provider>
+    );
+  };
 
   const sortHeader = (headerText) => {
-
-    return (<div className='up-arrow'>{headerText}</div>)
-  }
+    return <div className="up-arrow">{headerText}</div>;
+  };
 
   return (
     <thead>
       <tr>
         {headers.map((header, index) => {
-          //console.log(index)
           return (
-            <th 
-              className='columnHeader'
+            <th
+              className="columnHeader"
               key={index}
               //colSpan={getColumnLength}
               style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
               onClick={(e) => handleClick(index, e)}
             >
-              {header.toUpperCase() === 'ID' ? 'NO.' : header.toUpperCase() |
-              header.toUpperCase() === 'SELECTOR' ? filterHeader(header.toUpperCase()) : header.toUpperCase() | 
-              header.toUpperCase() === 'URL' ? filterHeader(header.toUpperCase()) : header.toUpperCase() |
-              header.toUpperCase() === 'COMPONENT' ? sortHeader(header.toUpperCase()) : header.toUpperCase()
-              }
+              {header.toUpperCase() === 'ID'
+                ? 'NO.'
+                : header.toUpperCase() | (header.toUpperCase() === 'SELECTOR')
+                ? filterHeader(header.toUpperCase())
+                : header.toUpperCase() | (header.toUpperCase() === 'URL')
+                ? filterHeader(header.toUpperCase())
+                : header.toUpperCase() | (header.toUpperCase() === 'COMPONENT')
+                ? sortHeader(header.toUpperCase())
+                : header.toUpperCase()}
             </th>
           );
         })}
