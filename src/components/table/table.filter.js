@@ -4,7 +4,6 @@ import { IssuesContext } from '../../App';
 import './table.css';
 
 
-
 // When the filter text doesn't match, we show the full list of issues
 
 const TableFilter = (props) => {
@@ -20,7 +19,7 @@ const TableFilter = (props) => {
   const { issues, setIssues } = useContext(IssuesContext);
 
 
-  const filtered = React.useMemo(() => {
+  const filteredIssues = React.useMemo(() => {
 
     // no search text in the search textbox
     // show all issues
@@ -30,14 +29,15 @@ const TableFilter = (props) => {
 
     return allIssues.filter((issue) => {
       return filterText.length > 0
-      ? issue.selector.toLowerCase().includes(filterText.toLowerCase())
+      ? issue.selector.toLowerCase().includes(filterText.toLowerCase()) ||
+      issue.url.toLowerCase().includes(filterText.toLowerCase())
       : allIssues;
     });
   }, [filterText, allIssues]);
 
-  if (filtered.length > 0 && filtered.length < allIssues.length) {
-    setIssues(filtered);
-  } else if (filtered.length === 0) {
+  if (filteredIssues.length > 0 && filteredIssues.length < allIssues.length) {
+    setIssues(filteredIssues);
+  } else if (filteredIssues.length === 0) {
     setIssues(allIssues);
   }
 
