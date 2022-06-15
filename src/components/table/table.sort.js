@@ -28,7 +28,7 @@ const TableSort = (props) => {
 
   const handleSorting = (sortField, sortOrder) => {
 
-    sortField = sortField.toLowerCase();
+    //sortField = sortField.toLowerCase();
     if (sortField) {
       const sorted = [...issues].sort((a, b) => {
         if (a[sortField] === null) {
@@ -60,7 +60,7 @@ const TableSort = (props) => {
       // onClick={(e) => handleSortingChange(e)}
     >
       <div className="up-arrow">
-        {props.headerText === ID ? NO : props.headerText}
+        {props.headerText === ID ? NO : props.headerText.toUpperCase()}
       </div>
     </th>
   );

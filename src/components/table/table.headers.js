@@ -27,10 +27,10 @@ const TableHeaders = (props) => {
       <tr key={1}>
         {headers.map((header, index) => {
           return  header.toUpperCase() === SELECTOR
-            ? filterHeader(header.toUpperCase())
-            : header.toUpperCase() | (header.toUpperCase() === URL)
-            ? filterHeader(header.toUpperCase())
-            : sortHeader(header.toUpperCase());
+            ? filterHeader(header)
+            : header | (header.toUpperCase() === URL)
+            ? filterHeader(header)
+            : sortHeader(header);
         })}
       </tr>
     </thead>
