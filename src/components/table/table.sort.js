@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { IssuesContext } from '../../App';
+import { NO, ID } from '../../constants/strings.js';
 import './table.css';
 
 const TableSort = (props) => {
@@ -10,14 +11,12 @@ const TableSort = (props) => {
   const [sortField, setSortField] = useState('');
   const [order, setOrder] = useState('asc');
 
-  //console.log(issues);
 
   const handleClick = (event) => {
     setIsActive((current) => !current);
   };
 
   const handleSortingChange = (accessor) => {
-    //console.log(accessor);
     setIsActive((current) => !current);
 
     const sortOrder =
@@ -28,42 +27,21 @@ const TableSort = (props) => {
   };
 
   const handleSorting = (sortField, sortOrder) => {
-    //console.log(sortField);
-
-    //console.log([...issues]);
 
     sortField = sortField.toLowerCase();
-
     if (sortField) {
-
-      console.log(issues);
-
       const sorted = [...issues].sort((a, b) => {
-        
-        console.log('a');
-        console.log(a);
-
-        console.log('b');
-        console.log(b);
-
         if (a[sortField] === null) {
-          console.log('1');
           return 1;
         }
         if (b[sortField] === null) {
-          console.log('-1');
           return -1;
         }
         if (a[sortField] === null && b[sortField] === null) {
-          console.log('0');
           return 0;
         }
 
-        console.log("a[sortField]")
-        console.log(a[sortField.toLowerCase()])
-        console.log(b[sortField])
         return (
-
           a[sortField].toString().localeCompare(b[sortField].toString(), 'en', {
             numeric: true,
           }) * (sortOrder === 'asc' ? 1 : -1)
@@ -81,7 +59,9 @@ const TableSort = (props) => {
       onClick={() => handleSortingChange(props.headerText)}
       // onClick={(e) => handleSortingChange(e)}
     >
-      <div className="up-arrow">{props.headerText}</div>
+      <div className="up-arrow">
+        {props.headerText === ID ? NO : props.headerText}
+      </div>
     </th>
   );
 };

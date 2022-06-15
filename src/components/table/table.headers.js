@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import TableFilter from './table.filter.js';
 import TableSort from './table.sort.js';
-import { NO, ID, SELECTOR, URL, COMPONENT } from '../../constants/strings.js';
+import { ID, SELECTOR, URL } from '../../constants/strings.js';
 import './table.css';
 
 const TableHeaders = (props) => {
@@ -26,10 +26,7 @@ const TableHeaders = (props) => {
     <thead>
       <tr key={1}>
         {headers.map((header, index) => {
-          return header.toUpperCase() === ID
-            ? sortHeader(NO)
-            : sortHeader(header.toUpperCase()) |
-              (header.toUpperCase() === SELECTOR)
+          return  header.toUpperCase() === SELECTOR
             ? filterHeader(header.toUpperCase())
             : header.toUpperCase() | (header.toUpperCase() === URL)
             ? filterHeader(header.toUpperCase())
