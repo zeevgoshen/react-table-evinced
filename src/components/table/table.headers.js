@@ -14,12 +14,6 @@ const TableHeaders = (props) => {
     headers = Object.keys(props.headernames[0]);
   }
 
-  const [isActive, setIsActive] = useState(true);
-
-  const handleClick = (index, event) => {
-    setIsActive((current) => !current);
-  };
-
   const filterHeader = (headerText) => {
     return <TableFilter issues={props.headernames} headerText={headerText} />;
   };
@@ -36,8 +30,6 @@ const TableHeaders = (props) => {
             <th
               className="columnHeader"
               key={index}
-              style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
-              onClick={(e) => handleClick(index, e)}
             >
               {header.toUpperCase() === ID
                 ? NO
