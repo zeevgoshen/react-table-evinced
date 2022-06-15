@@ -64,10 +64,7 @@ const TableSort = (props) => {
     >
       <div style={{ width: "30px", height: "30px" }}>
         <div className="buttonsAndLabel">
-          <div className="sortButtonsContainer">
-            <button className="sortButton">▲</button>
-            <button className="sortButton">▼</button>
-          </div>
+          
 
           <div style={{    }}>
             {props.headerText === ID ? (
@@ -86,6 +83,10 @@ const TableSort = (props) => {
             ) : (
               props.headerText.toUpperCase()
             )}
+          </div>
+          <div className="sortButtonsContainer">
+            <button className="sortButton">▲</button>
+            <button className="sortButton">▼</button>
           </div>
         </div>
       </div>
