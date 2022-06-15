@@ -11,6 +11,7 @@ th,td{
 }
 
 .filterTextBox {
+  height:35px;
   background-color: #fff;
   border-radius: 25px;
   border: 1px solid white;
@@ -20,7 +21,7 @@ th,td{
   height: 45px;
   color: white;
   background-color: #607085;
-  padding: 10px 20px;
+   
   width:600px;
   border: 1px solid white;
   text-align: left;

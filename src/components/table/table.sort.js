@@ -69,7 +69,7 @@ const TableSort = (props) => {
             <button className="sortButton">▼</button>
           </div>
 
-          <div style={{ height: "20px", float: "left" }}>
+          <div style={{    }}>
             {props.headerText === ID ? (
               NO
             ) : props.headerText.toUpperCase() |
