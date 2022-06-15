@@ -15,16 +15,16 @@ const TableHeaders = (props) => {
   }
 
   const filterHeader = (headerText) => {
-    return <TableFilter issues={props.headernames} headerText={headerText} />;
+    return <TableFilter key={headerText} issues={props.headernames} headerText={headerText} />;
   };
 
   const sortHeader = (headerText) => {
-    return <TableSort headerText={headerText} />;
+    return <TableSort key={headerText} headerText={headerText} />;
   };
 
   return (
     <thead>
-      <tr>
+      <tr key={1}>
         {headers.map((header, index) => {
           return header.toUpperCase() === ID
             ? sortHeader(NO)
