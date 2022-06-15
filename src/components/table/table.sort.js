@@ -1,6 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { IssuesContext } from '../../App';
-import { NO, ID, ISSUE_TYPE, ISSUETYPE, SELECTOR, URL } from '../../constants/strings.js';
+import {
+  NO,
+  ID,
+  ISSUE_TYPE,
+  ISSUETYPE,
+  SELECTOR,
+  URL,
+} from '../../constants/strings.js';
 import TableFilter from './table.filter.js';
 import './table.css';
 
@@ -55,15 +62,36 @@ const TableSort = (props) => {
       style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
       onClick={() => handleSortingChange(props.headerText)}
     >
-      
-      <div className="up-arrow">
-        {props.headerText === ID ? NO : props.headerText.toUpperCase() | 
-        (props.headerText === ISSUETYPE) ? ISSUE_TYPE: props.headerText.toUpperCase()
-        |
-        (props.headerText.toUpperCase() === SELECTOR || props.headerText.toUpperCase() === URL) ? 
-        <TableFilter key={props.headerText} issues={issues} headerText={props.headerText} />
-        : props.headerText.toUpperCase() 
-        }
+      <div>
+        <div className="sortButtonsContainer">
+          <button
+            className="sortButton"
+          >
+            ▲
+          </button>
+          <button
+            className="sortButton"
+          >
+            ▼
+          </button>
+        </div>
+
+        {props.headerText === ID ? (
+          NO
+        ) : props.headerText.toUpperCase() |
+          (props.headerText === ISSUETYPE) ? (
+          ISSUE_TYPE
+        ) : props.headerText.toUpperCase() |
+          (props.headerText.toUpperCase() === SELECTOR ||
+            props.headerText.toUpperCase() === URL) ? (
+          <TableFilter
+            key={props.headerText}
+            issues={issues}
+            headerText={props.headerText}
+          />
+        ) : (
+          props.headerText.toUpperCase()
+        )}
       </div>
     </th>
   );

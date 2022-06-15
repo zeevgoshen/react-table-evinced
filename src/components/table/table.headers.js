@@ -14,13 +14,13 @@ const TableHeaders = (props) => {
     headers = Object.keys(props.headernames[0]);
   }
 
-  const filterHeader = (headerText) => {
+  // const filterHeader = (headerText) => {
 
-    return <div style={{width:'280px'}}>
-      <TableSort key={headerText+'sort'} headerText={headerText} />
-      {/* <TableFilter key={headerText+'filter'} issues={props.headernames} headerText={headerText} /> */}
-    </div>;
-  };
+  //   return <div style={{width:'280px'}}>
+  //     <TableSort key={headerText+'sort'} headerText={headerText} />
+  //     {/* <TableFilter key={headerText+'filter'} issues={props.headernames} headerText={headerText} /> */}
+  //   </div>;
+  // };
 
   const sortHeader = (headerText) => {
     return <TableSort key={headerText} headerText={headerText} />;
