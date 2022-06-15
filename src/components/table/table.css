@@ -1,5 +1,11 @@
 table {
+  table-layout: fixed;
   border-collapse: collapse;
+  width:100%;
+}
+
+th,td{
+  padding:20px;
 }
 
 .filterTextBox {
@@ -13,10 +19,10 @@ table {
   height: 45px;
   background-color: #607085;
   font-family: sans-serif;
-  padding: 10px 0;
+  padding: 10px 20px;
   width:600px;
   border: 1px solid white;
-  
+  text-align: left;
 }
 .trSeparator{
   border-bottom: 1px solid #607085;
@@ -26,6 +32,13 @@ table {
   padding: '5px 5px 5px 15px';
 }
 
+.filterHeader {
+  width:260px;
+  height: auto;
+}
+.filterHeaderLabel {
+  padding-right: 10px;
+}
 .up-arrow {
   cursor: pointer;
   /* height: 10px; */

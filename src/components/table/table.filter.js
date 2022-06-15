@@ -38,8 +38,8 @@ const TableFilter = (props) => {
   }
 
   return (
-    <div>
-      <label>{props.headerText}</label>
+    <div className="filterHeader">
+      <label className="filterHeaderLabel">{props.headerText}</label>
       <input
         type="text"
         onChange={(e) => setFilter(e.target.value)}
