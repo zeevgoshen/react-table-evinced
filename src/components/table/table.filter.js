@@ -38,6 +38,9 @@ const TableFilter = (props) => {
   }
 
   return (
+    <th
+      className="columnHeader"
+      >
     <div className="filterHeader">
       <label className="filterHeaderLabel">{props.headerText}</label>
       <input
@@ -46,6 +49,7 @@ const TableFilter = (props) => {
         className="filterTextBox"
       />
     </div>
+    </th>
   );
 };
 export default TableFilter;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import TableFilter from './table.filter.js';
 import TableSort from './table.sort.js';
-import { NO, ID, SELECTOR, URL, COMPONENT } from '../../constants/strings.js'
+import { NO, ID, SELECTOR, URL, COMPONENT } from '../../constants/strings.js';
 import './table.css';
 
 const TableHeaders = (props) => {
@@ -19,29 +19,21 @@ const TableHeaders = (props) => {
   };
 
   const sortHeader = (headerText) => {
-    return <TableSort headerText={headerText}/>
+    return <TableSort headerText={headerText} />;
   };
 
   return (
     <thead>
       <tr>
         {headers.map((header, index) => {
-          return (
-            <th
-              className="columnHeader"
-              key={index}
-            >
-              {header.toUpperCase() === ID
-                ? NO
-                : header.toUpperCase() | (header.toUpperCase() === SELECTOR)
-                ? filterHeader(header.toUpperCase())
-                : header.toUpperCase() | (header.toUpperCase() === URL)
-                ? filterHeader(header.toUpperCase())
-                : header.toUpperCase() | (header.toUpperCase() === COMPONENT)
-                ? sortHeader(header.toUpperCase())
-                : header.toUpperCase()}
-            </th>
-          );
+          return header.toUpperCase() === ID
+            ? sortHeader(NO)
+            : sortHeader(header.toUpperCase()) |
+              (header.toUpperCase() === SELECTOR)
+            ? filterHeader(header.toUpperCase())
+            : header.toUpperCase() | (header.toUpperCase() === URL)
+            ? filterHeader(header.toUpperCase())
+            : sortHeader(header.toUpperCase());
         })}
       </tr>
     </thead>

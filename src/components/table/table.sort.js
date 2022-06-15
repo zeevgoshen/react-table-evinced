@@ -2,23 +2,24 @@ import React, { useState, useContext } from 'react';
 import './table.css';
 
 const TableSort = (props) => {
-
   const [isActive, setIsActive] = useState(true);
 
   const handleClick = (event) => {
-    setIsActive((current) => !current
+    setIsActive(
+      (current) => !current
       //this.parentNode.style.backgroundColor = "red";
     );
   };
 
   return (
-    <div
-      className="up-arrow"
+    <th
+      className="columnHeader"
+      key={props.headerText}
       style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
       onClick={(e) => handleClick(e)}
     >
-      {props.headerText}
-    </div>
+      <div className="up-arrow">{props.headerText}</div>
+    </th>
   );
 };
 export default TableSort;
