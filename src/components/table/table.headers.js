@@ -14,28 +14,11 @@ const TableHeaders = (props) => {
     headers = Object.keys(props.headernames[0]);
   }
 
-  // const filterHeader = (headerText) => {
-
-  //   return <div style={{width:'280px'}}>
-  //     <TableSort key={headerText+'sort'} headerText={headerText} />
-  //     {/* <TableFilter key={headerText+'filter'} issues={props.headernames} headerText={headerText} /> */}
-  //   </div>;
-  // };
-
-  const sortHeader = (headerText) => {
-    return <TableSort key={headerText} headerText={headerText} />;
-  };
-
   return (
     <thead>
       <tr key={1}>
-        {headers.map((header, index) => {
-          // return  header.toUpperCase() === SELECTOR
-          //   ? sortHeader(header)
-          //   : header | (header.toUpperCase() === URL)
-          //   ? sortHeader(header)
-          //   : sortHeader(header);
-          return sortHeader(header);
+        {headers.map((header) => {
+          return <TableSort key={header} headerText={header} />;
         })}
       </tr>
     </thead>
