@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import TableFilter from './table.filter.js';
 import TableSort from './table.sort.js';
+import { NO, ID, SELECTOR, URL, COMPONENT } from '../../constants/strings.js'
 import './table.css';
 
 const TableHeaders = (props) => {
@@ -14,10 +15,6 @@ const TableHeaders = (props) => {
   }
 
   const [isActive, setIsActive] = useState(true);
-
-  const getColumnLength = () => {
-    return headers.length;
-  };
 
   const handleClick = (index, event) => {
     setIsActive((current) => !current);
@@ -39,17 +36,16 @@ const TableHeaders = (props) => {
             <th
               className="columnHeader"
               key={index}
-              //colSpan={getColumnLength}
               style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
               onClick={(e) => handleClick(index, e)}
             >
-              {header.toUpperCase() === 'ID'
-                ? 'NO.'
-                : header.toUpperCase() | (header.toUpperCase() === 'SELECTOR')
+              {header.toUpperCase() === ID
+                ? NO
+                : header.toUpperCase() | (header.toUpperCase() === SELECTOR)
                 ? filterHeader(header.toUpperCase())
-                : header.toUpperCase() | (header.toUpperCase() === 'URL')
+                : header.toUpperCase() | (header.toUpperCase() === URL)
                 ? filterHeader(header.toUpperCase())
-                : header.toUpperCase() | (header.toUpperCase() === 'COMPONENT')
+                : header.toUpperCase() | (header.toUpperCase() === COMPONENT)
                 ? sortHeader(header.toUpperCase())
                 : header.toUpperCase()}
             </th>
