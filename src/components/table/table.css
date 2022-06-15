@@ -17,12 +17,14 @@ th,td{
 .columnHeader{
   font-size: 12px;
   height: 45px;
+  color: white;
   background-color: #607085;
   font-family: sans-serif;
   padding: 10px 20px;
   width:600px;
   border: 1px solid white;
   text-align: left;
+  
 }
 .trSeparator{
   border-bottom: 1px solid #607085;
