@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import { IssuesContext } from '../../App';
+import React, { useState, useContext } from "react";
+import { IssuesContext } from "../../App";
 import {
   NO,
   ID,
@@ -7,17 +7,17 @@ import {
   ISSUETYPE,
   SELECTOR,
   URL,
-} from '../../constants/strings.js';
-import TableFilter from './table.filter.js';
-import './table.css';
+} from "../../constants/strings.js";
+import TableFilter from "./table.filter.js";
+import "./table.css";
 
 const TableSort = (props) => {
   const [isActive, setIsActive] = useState(true);
 
   const { issues, setIssues } = useContext(IssuesContext);
 
-  const [sortField, setSortField] = useState('');
-  const [order, setOrder] = useState('asc');
+  const [sortField, setSortField] = useState("");
+  const [order, setOrder] = useState("asc");
 
   const handleClick = (event) => {
     setIsActive((current) => !current);
@@ -27,7 +27,7 @@ const TableSort = (props) => {
     setIsActive((current) => !current);
 
     const sortOrder =
-      accessor === sortField && order === 'asc' ? 'desc' : 'asc';
+      accessor === sortField && order === "asc" ? "desc" : "asc";
     setSortField(accessor);
     setOrder(sortOrder);
     handleSorting(accessor, sortOrder);
@@ -46,9 +46,9 @@ const TableSort = (props) => {
           return 0;
         }
         return (
-          a[sortField].toString().localeCompare(b[sortField].toString(), 'en', {
+          a[sortField].toString().localeCompare(b[sortField].toString(), "en", {
             numeric: true,
-          }) * (sortOrder === 'asc' ? 1 : -1)
+          }) * (sortOrder === "asc" ? 1 : -1)
         );
       });
       setIssues(sorted);
@@ -59,39 +59,35 @@ const TableSort = (props) => {
     <th
       className="columnHeader"
       key={props.headerText}
-      style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
+      style={{ backgroundColor: isActive ? "#607085" : "#435060" }}
       onClick={() => handleSortingChange(props.headerText)}
     >
-      <div>
-        <div className="sortButtonsContainer">
-          <button
-            className="sortButton"
-          >
-            ▲
-          </button>
-          <button
-            className="sortButton"
-          >
-            ▼
-          </button>
-        </div>
+      <div style={{ width: "30px", height: "30px" }}>
+        <div className="buttonsAndLabel">
+          <div className="sortButtonsContainer">
+            <button className="sortButton">▲</button>
+            <button className="sortButton">▼</button>
+          </div>
 
-        {props.headerText === ID ? (
-          NO
-        ) : props.headerText.toUpperCase() |
-          (props.headerText === ISSUETYPE) ? (
-          ISSUE_TYPE
-        ) : props.headerText.toUpperCase() |
-          (props.headerText.toUpperCase() === SELECTOR ||
-            props.headerText.toUpperCase() === URL) ? (
-          <TableFilter
-            key={props.headerText}
-            issues={issues}
-            headerText={props.headerText}
-          />
-        ) : (
-          props.headerText.toUpperCase()
-        )}
+          <div style={{ height: "20px", float: "left" }}>
+            {props.headerText === ID ? (
+              NO
+            ) : props.headerText.toUpperCase() |
+              (props.headerText === ISSUETYPE) ? (
+              ISSUE_TYPE
+            ) : props.headerText.toUpperCase() |
+              (props.headerText.toUpperCase() === SELECTOR ||
+                props.headerText.toUpperCase() === URL) ? (
+              <TableFilter
+                key={props.headerText}
+                issues={issues}
+                headerText={props.headerText}
+              />
+            ) : (
+              props.headerText.toUpperCase()
+            )}
+          </div>
+        </div>
       </div>
     </th>
   );
