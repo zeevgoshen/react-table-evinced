@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { IssuesContext } from '../../App';
-import { NO, ID } from '../../constants/strings.js';
+import { NO, ID, ISSUE_TYPE, ISSUETYPE  } from '../../constants/strings.js';
 import './table.css';
 
 const TableSort = (props) => {
@@ -60,7 +60,8 @@ const TableSort = (props) => {
       // onClick={(e) => handleSortingChange(e)}
     >
       <div className="up-arrow">
-        {props.headerText === ID ? NO : props.headerText.toUpperCase()}
+        {props.headerText === ID ? NO : props.headerText.toUpperCase() | 
+        (props.headerText === ISSUETYPE) ? ISSUE_TYPE : props.headerText.toUpperCase()}
       </div>
     </th>
   );
