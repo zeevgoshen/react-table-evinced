@@ -41,11 +41,15 @@ th,td{
 .filterHeaderLabel {
   padding-right: 10px;
 }
-.up-arrow {
-  cursor: pointer;
-  /* height: 10px; */
+.sortButtonsContainer {
+  width: 15px;
+  float: left;
+  margin-right: 10px;
 }
 
-.down-arrow {
-  cursor: pointer;
+.sortButton{
+  width: 15px;
+  border: none;
+  /* background-color:#607085; */
+  background-color:transparent;
 }

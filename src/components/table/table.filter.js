@@ -38,18 +38,15 @@ const TableFilter = (props) => {
   }
 
   return (
-    <th
-      className="columnHeader"
-      >
     <div className="filterHeader">
-      <label className="filterHeaderLabel">{props.headerText}</label>
-      <input
+    <label className="filterHeaderLabel">{props.headerText.toUpperCase()}</label>
+    <input
         type="text"
-        onChange={(e) => setFilter(e.target.value)}
+        onChange={(e) => {setFilter(e.target.value)}}
+        onClick={(e) => {e.stopPropagation()}}
         className="filterTextBox"
       />
-    </div>
-    </th>
+      </div>
   );
 };
 export default TableFilter;

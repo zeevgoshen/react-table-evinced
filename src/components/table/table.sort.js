@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { IssuesContext } from '../../App';
-import { NO, ID, ISSUE_TYPE, ISSUETYPE  } from '../../constants/strings.js';
+import { NO, ID, ISSUE_TYPE, ISSUETYPE, SELECTOR, URL } from '../../constants/strings.js';
+import TableFilter from './table.filter.js';
 import './table.css';
 
 const TableSort = (props) => {
@@ -10,7 +11,6 @@ const TableSort = (props) => {
 
   const [sortField, setSortField] = useState('');
   const [order, setOrder] = useState('asc');
-
 
   const handleClick = (event) => {
     setIsActive((current) => !current);
@@ -27,8 +27,6 @@ const TableSort = (props) => {
   };
 
   const handleSorting = (sortField, sortOrder) => {
-
-    //sortField = sortField.toLowerCase();
     if (sortField) {
       const sorted = [...issues].sort((a, b) => {
         if (a[sortField] === null) {
@@ -40,7 +38,6 @@ const TableSort = (props) => {
         if (a[sortField] === null && b[sortField] === null) {
           return 0;
         }
-
         return (
           a[sortField].toString().localeCompare(b[sortField].toString(), 'en', {
             numeric: true,
@@ -57,11 +54,16 @@ const TableSort = (props) => {
       key={props.headerText}
       style={{ backgroundColor: isActive ? '#607085' : '#435060' }}
       onClick={() => handleSortingChange(props.headerText)}
-      // onClick={(e) => handleSortingChange(e)}
     >
+      
       <div className="up-arrow">
         {props.headerText === ID ? NO : props.headerText.toUpperCase() | 
-        (props.headerText === ISSUETYPE) ? ISSUE_TYPE : props.headerText.toUpperCase()}
+        (props.headerText === ISSUETYPE) ? ISSUE_TYPE: props.headerText.toUpperCase()
+        |
+        (props.headerText.toUpperCase() === SELECTOR || props.headerText.toUpperCase() === URL) ? 
+        <TableFilter key={props.headerText} issues={issues} headerText={props.headerText} />
+        : props.headerText.toUpperCase() 
+        }
       </div>
     </th>
   );
