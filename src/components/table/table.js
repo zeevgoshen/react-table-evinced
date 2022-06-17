@@ -10,10 +10,10 @@ const Table = (props) => {
       <table style={{ width: 'auto', height: 'auto' }}>
         <TableHeaders headernames={propsData} />
         <tbody>
-          {propsData.map((obj, index) => (
-            <tr key={index} className="trSeparator">
-              {Object.values(obj).map((value, index1) => (
-                <td className="columnCell" key={index1}>
+          {propsData.map((obj, trindex) => (
+            <tr key={trindex} className="trSeparator">
+              {Object.values(obj).map((value, tdindex) => (
+                <td className="columnCell" key={tdindex}>
                   {value}
                 </td>
               ))}
