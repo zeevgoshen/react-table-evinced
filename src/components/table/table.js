@@ -3,16 +3,15 @@ import TableHeaders from './table.headers';
 import './table.css';
 
 const Table = (props) => {
-  let propsData = props.data;
 
   return (
     <div>
       <table style={{ width: 'auto', height: 'auto' }}>
-        <TableHeaders headernames={propsData} />
+        <TableHeaders headernames={props.data} />
         <tbody>
-          {propsData.map((obj, trindex) => (
+          {props.data && props.data.map((obj, trindex) => (
             <tr key={trindex} className="trSeparator">
-              {Object.values(obj).map((value, tdindex) => (
+              {obj && Object.values(obj).map((value, tdindex) => (
                 <td className="columnCell" key={tdindex}>
                   {value}
                 </td>
