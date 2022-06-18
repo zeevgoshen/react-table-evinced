@@ -1,8 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import TableFilter from './table.filter.js';
 import TableSort from './table.sort.js';
-import { ID, SELECTOR, URL } from '../../constants/strings.js';
 import './table.css';
 
 const TableHeaders = (props) => {
