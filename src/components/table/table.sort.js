@@ -28,6 +28,7 @@ const TableSort = (props) => {
 
     const sortOrder =
       accessor === sortField && order === "asc" ? "desc" : "asc";
+
     setSortField(accessor);
     setOrder(sortOrder);
     handleSorting(accessor, sortOrder);
@@ -64,9 +65,7 @@ const TableSort = (props) => {
     >
       <div>
         <div className="buttonsAndLabel">
-          
-
-          <div style={{    }}>
+          <div style={{}}>
             {props.headerText === ID ? (
               NO
             ) : props.headerText.toUpperCase() |
@@ -85,8 +84,11 @@ const TableSort = (props) => {
             )}
           </div>
           <div className="sortButtonsContainer">
-            <button className="sortButton">▲</button>
-            <button className="sortButton">▼</button>
+            {order === "asc" ? (
+              <button className="sortButton asc">▲</button>
+            ) : (
+              <button className="sortButton desc">▼</button>
+            )}
           </div>
         </div>
       </div>
