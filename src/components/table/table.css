@@ -1,7 +1,7 @@
 table {
   table-layout: fixed;
   border-collapse: collapse;
-  width:100%;
+  width: "auto"; height: "auto";
 }
 
 th,td{
