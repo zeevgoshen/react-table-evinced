@@ -2,7 +2,7 @@
 
 To Run:
 
-git clone 
+git clone https://github.com/zeevgoshen/react-table-evinced.git
 
 cd into "react-table-evinced"
 
