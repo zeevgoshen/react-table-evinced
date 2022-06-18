@@ -5,11 +5,8 @@ table {
 }
 
 th,td{
-  padding:20px;
-  /* padding-top: 0px;
-  padding-bottom: 0px; */
+  padding:10px 0px 10px 10px;
   font-family: 'Lato', sans-serif;
-  
 }
 
 .filterTextBox {
@@ -24,7 +21,7 @@ th,td{
   color: white;
   background-color: #607085;
    
-  width:400px;
+  width:350px;
   border: 1px solid white;
   text-align: left;
   
@@ -38,8 +35,9 @@ th,td{
 }
 
 .filterHeader {
-  width:260px;
   height: auto;
+  display: flex;
+  align-items: center;
 }
 .filterHeaderLabel {
   padding-right: 10px;
@@ -54,16 +52,11 @@ th,td{
 .sortButton{
   width: 15px;
   border: none;
-  /* background-color:#607085; */
   background-color:transparent;
   color: white;
 }
 
 .buttonsAndLabel {
-  /* height:45px;
-  width:80px;
-  border:1px solid black;*/
   display: flex; 
   align-items: center;
-  width:200px;
 }

@@ -62,7 +62,7 @@ const TableSort = (props) => {
       style={{ backgroundColor: isActive ? "#607085" : "#435060" }}
       onClick={() => handleSortingChange(props.headerText)}
     >
-      <div style={{ width: "30px", height: "30px" }}>
+      <div>
         <div className="buttonsAndLabel">
           
 
