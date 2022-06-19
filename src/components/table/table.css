@@ -32,6 +32,10 @@ th,td{
 }
 .columnCell {
   padding: '5px 5px 5px 15px';
+  height: 45px;
+  font-size: 12px;
+  color:#131516;
+  background-color: #fff;
 }
 
 .filterHeader {
