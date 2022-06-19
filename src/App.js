@@ -1,6 +1,7 @@
 import React, { useState, createContext, useEffect } from "react";
 import Table from "./components/table/table";
 import axios from "axios";
+import { APIURL } from "./constants/strings";
 import "./style.css";
 
 export const IssuesContext = createContext();
@@ -14,7 +15,7 @@ export default function App() {
 
   const loadIssuesData = async () => {
     await axios
-      .get("http://localhost:3000/issuesArray")
+      .get(APIURL)
       .then((response) => setIssues(response.data))
       .catch((err) => console.log(err));
   };
