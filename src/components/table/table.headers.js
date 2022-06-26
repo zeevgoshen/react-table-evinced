@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import TableSort from "./table.sort.js";
 import "./table.css";
+import { IssuesContext } from "../../App";
 
-const TableHeaders = (props) => {
+
+const TableHeaders = () => {
+  const { issues } = useContext(IssuesContext);
   let headers;
 
-  if (props.headernames[0]) {
-    headers = Object.keys(props.headernames[0]);
+  if (issues[0]) {
+    headers = Object.keys(issues[0]);
   }
 
   return (

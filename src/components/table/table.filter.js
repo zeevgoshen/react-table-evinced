@@ -10,11 +10,12 @@ const TableFilter = (props) => {
 
   // using this state so we can reload the full issuelist
   // when no results are found
-  const [allIssues, setAllIssues] = useState(props.issues);
+  const { issues, setIssues } = useContext(IssuesContext);
+  
+  const [allIssues, setAllIssues] = useState(issues);
 
   // We will be using setIssues (from context) to update
   // the table with the filtered results
-  const { issues, setIssues } = useContext(IssuesContext);
 
   const filteredIssues = useMemo(() => {
     // no search text in the search textbox
@@ -29,7 +30,7 @@ const TableFilter = (props) => {
             issue.url.toLowerCase().includes(filterText.toLowerCase())
         : allIssues;
     });
-  }, [filterText, allIssues]);
+  }, [filterText]);
 
   if (filteredIssues.length > 0 && filteredIssues.length < allIssues.length) {
     setIssues(filteredIssues);

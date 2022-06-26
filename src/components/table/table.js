@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import TableHeaders from "./table.headers";
+import { IssuesContext } from "../../App";
 import "./table.css";
 
-const Table = (props) => {
+const Table = () => {
+
+  const { issues } = useContext(IssuesContext);
+
   return (
     <table>
-      <TableHeaders headernames={props.data} />
+      <TableHeaders headernames={issues} />
       <tbody>
-        {props.data &&
-          props.data.map((obj, trindex) => (
+        {issues &&
+          issues.map((obj, trindex) => (
             <tr key={trindex} className="trSeparator">
               {obj &&
                 Object.values(obj).map((value, tdindex) => (
