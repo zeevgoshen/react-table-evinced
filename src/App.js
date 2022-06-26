@@ -1,8 +1,6 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { createContext } from "react";
 import Table from "./components/table/table";
 import { useIssues } from './services/useIssues'
-import axios from "axios";
-import { APIURL } from "./constants/strings";
 import "./style.css";
 export const IssuesContext = createContext();
 
